@@ -1,0 +1,212 @@
+
+body, html{
+    margin:0;
+    height:100%;
+    width: 100%;
+    color:#fff;
+}
+#pages{
+    position:absolute;
+    height:  100%;
+    width:   100%;
+    overflow:hidden;
+}
+.page{
+    position:          absolute;
+    height:            100%;
+    width:             100%;
+    /*border:            1px solid red;*/
+    -webkit-transform: translate3d(0px, 100%, 0px);
+    /*-webkit-transform: translate3d(100%, 0, 0px);*/
+    -webkit-transition:-webkit-transform 300ms ease-in-out;
+}
+section.moving{
+    -webkit-transition:-webkit-transform 0s linear;
+}
+.play{
+    /*background:gray;*/
+}
+.page-1{
+    color:#fff;
+    background:#BF1E2D;
+}
+.page-2{
+    background:#18193B;
+}
+.page-3{
+    /*background:#BF1E2D;*/
+}
+.page-4{
+    background:#18193B;
+}
+.page-5{
+    background:#BF1E2D;
+}
+.sub-page{
+    position:          absolute;
+    height:            100%;
+    width:             100%;
+    /*border:            1px solid green;*/
+    -webkit-transform: translate3d(100%, 0, 0px);
+    -webkit-transition:-webkit-transform 300ms ease-out;
+}
+.sub-page1{
+    background:#000;
+}
+.sub-page2{
+    background:#18193B;
+}
+.sub-page3{
+    background:#BF1E2D;
+}
+
+.play .circle{
+    position:         absolute;
+    left:             50%;
+    top:              50%;
+    width:            50px;
+    height:           50px;
+    background:       white;
+    margin-left:      -25px;
+    margin-top:       -25px;
+    -webkit-animation:rotate 1000ms linear 0 infinite;
+}
+
+@-webkit-keyframes rotate{
+    0%{
+        -webkit-transform:rotate(0deg);
+    }
+    100%{
+        -webkit-transform:rotate(360deg);
+    }
+}
+
+.block{
+    position:  absolute;
+    left:      0;
+    top:       0;
+    width:     50px;
+    height:    50px;
+    background:white;
+}
+
+.play > .block1{
+    -webkit-animation:move 1s ease 1s both;
+}
+
+.play > .block2{
+    left:             0px;
+    top:              50px;
+    -webkit-animation:move 1s ease-in 2s both;
+}
+.play > .block3{
+    top:              100px;
+    -webkit-animation:move 1s ease-out 3s both;
+}
+.play > .block4{
+    top:              150px;
+    -webkit-animation:move 1s ease-in-out 2s both;
+}
+.play > .block5{
+    top:              200px;
+    -webkit-animation:move 1s linear 4s both;
+}
+@-webkit-keyframes move{
+    0%{
+        -webkit-transform:translate3d(0, 0, 0);
+    }
+    100%{
+        -webkit-transform:translate3d(270px, 0, 0);
+    }
+}
+
+.array{
+    position:       absolute;
+    width:          20px;
+    height:         20px;
+    margin-left:    -10px;
+    background:     url(drop-up.png) no-repeat;
+    background-size:20px auto;
+    font-size:      10px;
+}
+.array-down{
+    left:             50%;
+    bottom:           10px;
+    margin-left:      -10px;
+    -webkit-animation:array-down 1.5s linear 0s infinite;
+}
+@-webkit-keyframes array-down{
+    0%{
+        opacity:          0;
+        -webkit-transform:translate(0, 10px)
+    }
+    50%{
+        opacity:          1;
+        -webkit-transform:translate(0, 0px)
+    }
+    100%{
+        opacity:          0;
+        -webkit-transform:translate(0, -10px)
+    }
+}
+
+.array-right{
+    right:            10px;
+    top:              50%;
+    margin-top:       -10px;
+    -webkit-animation:array-right 1.5s linear 0s infinite;
+}
+@-webkit-keyframes array-right{
+    0%{
+        opacity:          0;
+        -webkit-transform:translate(-10px, 0px) rotateZ(90deg);
+    }
+    50%{
+        opacity:          1;
+        -webkit-transform:translate(0, 0px) rotateZ(90deg);
+    }
+    100%{
+        opacity:          0;
+        -webkit-transform:translate(10px, 0) rotateZ(90deg);
+    }
+}
+
+.array-left{
+    left:             10px;
+    top:              50%;
+    margin-top:       -10px;
+    -webkit-animation:array-left 1.5s linear 0s infinite;
+}
+@-webkit-keyframes array-left{
+    0%{
+        opacity:          0;
+        -webkit-transform:translate(10px, 0px) rotateZ(-90deg);
+    }
+    50%{
+        opacity:          1;
+        -webkit-transform:translate(0, 0px) rotateZ(-90deg);
+    }
+    100%{
+        opacity:          0;
+        -webkit-transform:translate(-10px, 0) rotateZ(-90deg);
+    }
+}
+
+#head-back{
+    position:   absolute;
+    left:       50%;
+    top:        0;
+    width:      200px;
+    margin-left:-100px;
+    text-align: center;
+    color:      red;
+}
+#foot-back{
+    position:   absolute;
+    left:       50%;
+    bottom:     0;
+    width:      200px;
+    margin-left:-100px;
+    text-align: center;
+    color:      red;
+}

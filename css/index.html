@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <link type="text/css" rel="stylesheet" href="x.css"/>
+    <style>
+        body{
+            margin:8px;
+            /*border:1px solid #eee;*/
+        }
+        .x-btn{
+            margin-bottom:10px;
+        }
+
+        hr{
+            border-color:red;
+        }
+    </style>
+</head>
+<body>
+
+<button class="x-btn">基础按钮button</button>
+<a class="x-btn">基础按钮a</a>
+<input type="button" class="x-btn" value="基础按钮[type=button]"/>
+
+<a class="x-btn x-btn-white">基础按钮a</a>
+<button id="btn" disabled="disabled" class="x-btn x-btn-white">基础按钮a</button>
+
+<div class="x-item-wrap">
+    <div class="x-item">文本内容 文本内容</div>
+</div>
+<div class="x-item-wrap">
+    <div class="x-item ell">文本内容 文本内容文本内容 文本内容文本内容 文本内容文本内容 文本内容文本内容 文本内容</div>
+    <div class="x-r-arrow"></div>
+</div>
+
+<hr/>
+
+<div class="x-item-wrap x-item-indent">
+    <div>文本内容 文本内容</div>
+</div>
+<div class="x-item-wrap x-item-indent">
+    <div class="ell">文本内容 文本内容文本内容 文本内容文本内容 文本内容文本内容 文本内容文本内容 文本内容</div>
+    <div class="x-r-arrow"></div>
+</div>
+
+<hr/>
+<div class="x-item-wrap">
+    <div class="x-item">文本内容 文本内容</div>
+</div>
+<div class="x-item-wrap x-item-indent">
+    <div class="ell">文本内容 文本内容文本内容 文本内容文本内容 文本内容文本内容 文本内容文本内容 文本内容</div>
+    <div class="x-r-arrow"></div>
+</div>
+<div class="x-item-wrap">
+    <div class="x-item">文本内容 文本内容</div>
+</div>
+
+<hr/>
+
+<div class="x-item-wrap x-item-round-hd">
+    <div class="x-item">文本内容 文本内容</div>
+</div>
+<div class="x-item-wrap x-item-round">
+    <div class="x-item ell">文本内容 文本内容文本内容 文本内容文本内容 文本内容文本内容 文本内容文本内容 文本内容</div>
+    <div class="x-r-arrow"></div>
+</div>
+<div class="x-item-wrap x-item-round-ft">
+    <div class="x-item">文本内容 文本内容</div>
+</div>
+
+<hr/>
+
+<div class="x-item-wrap flex">
+    <div class="x-item-label">姓名:</div>
+    <input class="x-item-input" type="text" placeholder="姓名"/>
+</div>
+<div class="x-item-wrap x-item-indent flex">
+    <div class="x-item-label">学号:</div>
+    <input class="x-item-input" type="text" placeholder="学号"/>
+</div>
+
+<div class="x-item-wrap x-item-indent flex">
+    <div class="x-item-label">tel:</div>
+    <input class="x-item-input" type="tel" placeholder="tel"/>
+</div>
+<div class="x-item-wrap x-item-indent flex">
+    <div class="x-item-label">number:</div>
+    <input class="x-item-input" type="number" placeholder="number"/>
+</div>
+
+<div class="x-item-wrap flex">
+    <div class="x-item-label">身份证号:</div>
+    <input class="x-item-input" type="text" placeholder="身份证号"/>
+</div>
+
+<a href="tel:1111">11111</a>
+<script>
+    //    document.querySelector('#btn').addEventListener('click', function(e){
+    //        alert('a');
+    //    }, false)
+</script>
+</body>
+</html>

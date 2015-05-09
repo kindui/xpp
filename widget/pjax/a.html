@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+</head>
+<body>
+<style>
+    body, html {
+        margin: 0;
+    }
+</style>
+<script>
+    window.onpopstate = function(event) {
+        console.log(event);
+//        alert("location: " + document.location + ", state: " + JSON.stringify(event.state));
+    };
+
+    history.pushState({page: 1}, null, "?page=1");
+    history.pushState({page: 2}, null, "?page=2");
+//    history.pushState({page: 2}, "title 2", "?page=2");
+//    history.replaceState({page: 3}, "title 3", "?page=3");
+//    history.back(); // alerts "location: http://example.com/example.html?page=1, state: {"page":1}"
+//    history.back(); // alerts "location: http://example.com/example.html, state: null
+//    history.go(2);  // alerts "location: http://example.com/example.html?page=3, state: {"page":3}
+</script>
+</body>
+</html>

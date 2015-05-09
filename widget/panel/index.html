@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="../../dist/xpp.js"></script>
+    <script type="text/javascript" src="panel.js"></script>
+</head>
+<body>
+<style>
+    body, html{
+        margin:0;
+        font-size:10px;
+    }
+</style>
+<h1>移动端侧滑组件</h1>
+<button id="slide_btn_left">slide left</button>
+<button id="slide_btn_right">slide right</button>
+<button id="slide_btn_up">slide up</button>
+<button id="slide_btn_down">slide down</button>
+
+<ul id="aaa">
+    <li>123123123</li>
+    <li>123123123</li>
+    <li>123123123</li>
+    <li>123123123</li>
+    <li>123123123</li>
+</ul>
+
+<script>
+    var Panel = X.widgets.Panel;
+    var panel = new Panel({el: '#aaa'});
+    var x = X.app({
+        el: {
+
+            slide_btn_left: '#slide_btn_left',
+            slide_btn_right: '#slide_btn_right',
+            slide_btn_up: '#slide_btn_up',
+            slide_btn_down: '#slide_btn_down',
+
+        },
+        _init: function(){
+            this.on(this.slide_btn_left, 'click', function(e){
+                panel.inLeft();
+            });
+            this.on(this.slide_btn_right, 'click', function(e){
+                panel.inRight();
+            });
+            this.on(this.slide_btn_up, 'click', function(e){
+                panel.inUp();
+            });
+            this.on(this.slide_btn_down, 'click', function(e){
+                panel.inDown();
+            });
+        }
+    });
+
+
+</script>
+</body>
+</html>

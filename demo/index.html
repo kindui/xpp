@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>移动端开发库 - human</title>
+    <script src="../widget/iphone/iphone.js"></script>
+    <script src="../widget/iphone/qrcode.js"></script>
+</head>
+<body>
+
+<script>
+    function iframeOnloadCb(name) {
+        console.log('window.frame["%s"] 初始化完毕', name);
+    }
+    var basePath = '../widget/';
+    var iphone = iphone
+            .add(basePath + 'carousel', '滑动组件', iframeOnloadCb)
+            .add(basePath + 'app', '应用架构', iframeOnloadCb)
+            .add(basePath + 'citySelector', '城市选择器', buttonTip)
+            .add(basePath + 'animate', 'CSS3动画队列', buttonTip)
+            .add(basePath + 'loading', 'Loading组件', iframeOnloadCb)
+            .add(basePath + 'toast', 'Toast组件', iframeOnloadCb)
+            .add(basePath + 'msgbox', 'Msgbox组件', iframeOnloadCb)
+
+            .add(basePath + 'pushPanel', '侧面推出组件', iframeOnloadCb)
+            .add(basePath + 'panel', '侧面推出组件2', iframeOnloadCb)
+
+            .add(basePath + 'validator', '输入框验证组件', iframeOnloadCb)
+            .add(basePath + 'pageSlider', '转场动画', iframeOnloadCb)
+            .add(basePath + 'lazyloadImg', '图片懒加载', iframeOnloadCb)
+            .add(basePath + 'position', '定位组件', iframeOnloadCb)
+            .add(basePath + 'textScroll', '文字滚动组件', iframeOnloadCb)
+            .add(basePath + 'pcTouch', 'pcTouch', iframeOnloadCb)
+            .add(basePath + 'xscroll', 'xscroll', iframeOnloadCb)
+
+    function buttonTip(){
+        var iphoneBtn = window.iphoneBtn = document.querySelector('#'+Object.keys(iphones)[1]).querySelector('.simu_footer');
+//        iphoneBtn.textContent='**点苹果HOME按钮---------------------- 有惊喜**';
+    }
+</script>
+</body>
+</html>

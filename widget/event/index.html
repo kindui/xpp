@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+
+    function Event() {
+        this.index = 0;
+        this.el = null;
+        this.items = [];
+    }
+
+    Event.prototype = {
+        constructor: Event,
+        add: function (item) {
+            item.exec = function () {
+                var item, next;
+
+                if (item = this.items[this.index]) {
+                    item.callback();
+                }
+
+                this.index++;
+                if (next = this.items[this.index]) {
+                    next.exec();
+                }
+            }.bind(this);
+
+            this.items.push(item);
+            return this;
+        },
+        run: function () {
+            this.items[0].exec();
+        }
+    }
+
+    e = new Event();
+
+    e
+            .add({
+                callback: function () {
+                    console.log(1)
+                }
+            })
+            .add({
+                callback: function () {
+                    console.log(2)
+                }
+            })
+            .add({
+                callback: function () {
+                    console.log(3)
+                }
+            })
+            .run();
+</script>
+</body>
+</html>

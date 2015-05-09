@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="../../dist/xpp.js"></script>
+    <style>
+        button {
+            height: 30px;
+            margin: 5px;
+        }
+
+        .block {
+            width: 50px;
+            height: 50px;
+            background: #000;
+            color: #fff;
+        }
+
+        ul {
+            border: 1px solid green;
+        }
+
+        li {
+            background: #ccc;
+            margin-bottom: 5px;
+            height: 30px;
+        }
+
+        #tpl_sample_A {
+            border: 1px solid red;
+            margin-top: 10px;
+        }
+
+        #tpl_sample_A div {
+            height: 30px;
+            background: #ccc;
+            margin-bottom: 10px;
+            padding-left: 10px;
+        }
+
+        #tpl_sample_C span {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div class="block">点击我</div>
+<button id="blockBtnTrigger">Trigger Element Click!</button>
+<button id="blockBtnOff">Off Element Click!</button>
+
+<!--模板替换（一）-->
+<div id="tpl_sample_A">
+    <div id="name"> -</div>
+    <div id="age"> -</div>
+</div>
+<button id="tplBtnA">点击替换模板方法（一）</button>
+
+<!--模板替换（二）-->
+<script type="template" id="tpl_B">
+    <ul>
+        <% for(var i=0; i
+        <data.length
+        ;i++) { %>
+        <li>list item <%=i%></li>
+        <% } %>
+    </ul>
+</script>
+<div id="tpl_sample_B"></div>
+<button id="tplBtnB">点击替换模板方法（二）</button>
+
+<!--模板替换（三）-->
+<div id="tpl_sample_C">
+    Hello everyone! my name is <span>{name}</span>, I'm not <span>{age}</span> hou.
+</div>
+<button id="tplBtnC">点击替换模板方法（三）</button>
+
+<div>
+    <button id="storeSetString">localStorage set [String]</button>
+    <button id="storeGetString">localStorage get [String]</button>
+
+    <button id="storeSetObj">localStorage get [Object]</button>
+    <button id="storeGetObj">localStorage get [Object]</button>
+</div>
+
+<div>
+    <button id="postBase">基本post</button>
+    <button id="postTimeout">Ajax 超时处理</button>
+    <button id="postJsonError">Ajax json Parse Error</button>
+</div>
+
+<div>
+    <button id="dateFormatBtn">时间格式生成</button>
+    <button id="urlBtn">取得URL参数</button>
+    <button id="detectBtn">浏览器探测</button>
+</div>
+<h5>Selector:        [Single] this.$();          [Array] this.$$()</h5>
+<script>
+
+    var index = X.app({
+        el: {
+            block: '.block',
+            blockBtnOff: '#blockBtnOff',
+            blockBtnTrigger: '#blockBtnTrigger',
+
+            tplBtnA: '#tplBtnA',
+            tplBtnB: '#tplBtnB',
+            tplBtnC: '#tplBtnC',
+
+            storeSetString: '#storeSetString',
+            storeGetString: '#storeGetString',
+            storeSetObj: '#storeSetObj',
+            storeGetObj: '#storeGetObj',
+
+            postBase: '#postBase',
+            postTimeout: '#postTimeout',
+            postJsonError: '#postJsonError',
+
+            dateFormatBtn: '#dateFormatBtn',
+            urlBtn:'#urlBtn',
+            detectBtn:'#detectBtn',
+
+            tpl_sample_A: '#tpl_sample_A',
+            tpl_sample_B: '#tpl_sample_B',
+            tpl_sample_C: '#tpl_sample_C'
+        },
+        els: {
+//            many: 'many'
+        },
+        tpl: {
+            tpl_B: '#tpl_B'
+        },
+        //全局设置
+        ajaxConfig: {
+            jsonError: function () {
+                console.log('Json parse Error process');
+            },
+            timeout: 10,
+            timeoutCb: function () {
+                console.log('Ajax timeout process!');
+            },
+            beforeResponse: function () {
+            },
+            afterResponse: function () {
+            }
+        },
+        _init: function () {
+            this.bindEvent();
+        },
+        bindEvent: function () {
+
+            //Event trigger, off
+            this.on(this.block, 'click', this.blockClickHandler);
+            this.on(this.blockBtnOff, 'click', this.blockOffClick);
+            this.on(this.blockBtnTrigger, 'click', this.blockTriggerClick);
+
+            //模板方法
+            this.on(this.tplBtnA, 'click', this.tplAMethod);
+
+            this.on(this.tplBtnB, 'click', this.tplBMethod);
+
+            this.on(this.tplBtnC, 'click', this.tplCMethod);
+
+            //事件委托
+            this.delegate(this.tpl_sample_B, 'li', 'click', this.listClickHandler);
+
+            //LocalStorage
+            this.on(this.storeSetString, 'click', function () {
+                this.setData('name', 'human');
+            });
+            this.on(this.storeGetString, 'click', function () {
+                var name = this.getData('name');
+                console.log(name);
+            });
+            this.on(this.storeGetObj, 'click', function () {
+                 var person = this.setData('person',{
+                     name:'human',
+                     age:'80'
+                 })
+            });
+            this.on(this.storeSetObj, 'click', function () {
+                var person = this.getData('person');
+                console.log(person);
+            });
+
+            //Ajax
+            this.on(this.postBase,'click',function(e){
+                this.post('data.js',{name:'human'},function(res){
+                    console.log('post:' ,res);
+                });
+            });
+            this.on(this.postTimeout,'click',function(e){
+                //3秒钟未返回将超时，全局函数处理
+                this.post('blank',{name:'human'},function(res){
+                },{
+                    timeout:2
+//                    timeoutCb:function(){
+//                    }
+                });
+            });
+            this.on(this.postJsonError,'click',function(e){
+                //3秒钟未返回将超时，全局函数处理
+                this.post('dataWrong.js',{name:'human'},function(res){
+                },{
+//                    jsonError:function(){
+//                        //process
+//                    }
+                });
+            });
+
+            //Util
+            this.on(this.dateFormatBtn,'click',function(e){
+                console.log(this.dateFormat('YYYY-MM-DD hh:mm:ss'));
+                console.log(this.dateFormat(new Date(),'YYYY-MM-DD hh:mm:ss'));
+            });
+
+            this.on(this.urlBtn,'click',function(e){
+                console.log(this.urlObj());
+            });
+
+            this.on(this.detectBtn,'click',function(e){
+                console.log(this.detect);
+            });
+        },
+        blockClickHandler: function () {
+            console.log('block clicked');
+        },
+        blockTriggerClick: function () {
+            //触发一个click事件
+            this.trigger(this.block, 'click');
+            console.log('block trigger click!');
+        },
+        blockOffClick: function () {
+            //删除一个事件,释放内存
+            this.off(this.block, 'click', this.blockClickHandler);
+            console.log('block off click!');
+        },
+        tplAMethod: function () {
+            //模板测试
+            this.tpl2obj(this.tpl_sample_A, {
+                '#name': 'tom',
+                '#age': 99
+            })
+        },
+        tplBMethod: function () {
+            //模板测试
+            var data = {data: [
+                1, 2, 3, 4
+            ]};
+            this.tpl_sample_B.innerHTML = this.tpl2html(this.tpl.tpl_B, data);
+        },
+        tplCMethod: function () {
+            this.tpl_sample_C.innerHTML = this.tpl2replace(this.tpl_sample_C.innerHTML, {
+                name: 'human',
+                age: 90
+            })
+        },
+        listClickHandler: function (e) {
+//            事件代理,获得当前元素
+            var curTarget = e.currentEl;
+            console.log(curTarget);
+        }
+    });
+</script>
+</body>
+</html>

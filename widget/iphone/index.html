@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="iphone.js"></script>
+    <script type="text/javascript" src="qrcode.js"></script>
+    <style>
+        body, html{
+            margin:5px;
+        }
+
+    </style>
+</head>
+<body>
+
+<script>
+
+    function iframeOnloadCb(name){
+        console.log('window.frame["%s"] 初始化完毕', name);
+    }
+    var iphone = iphone.add('iframe1.html','文字', iframeOnloadCb)
+            .add('iframe2.html', iframeOnloadCb)
+
+</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name=”apple-mobile-web-app-status-bar-style” content=default/>
+    <meta name="apple-mobile-web-app-title" content="城市选择">
+    <!--PC上使用需要引入-->
+    <script src="../pcTouch/pcTouch.js"></script>
+
+    <script src="../../dist/xpp.js"></script>
+    <script src="citySelector.js"></script>
+
+    <script src="data.js"></script>
+</head>
+<body>
+<style>
+    body, html {
+        -webkit-user-select: none;
+        margin: 0;
+    }
+
+    h4 {
+        margin: 0;
+        margin-bottom:10px;
+    }5
+    h6{
+        margin:0;
+        margin-bottom:10px;
+    }
+    #open {
+        margin-top: 100px;
+        width: 100%;
+        height: 50px;
+    }
+
+    #res {
+        word-wrap: break-word;
+        word-break: break-all;
+        border: 1px solid #ccc;
+        height: 100px;
+        margin-top: 10px;
+    }
+</style>
+<h4>插件特色</h4>
+<h6>android ios 超流畅，无bug</h6>
+<h6>城市的数据类型，对象的key可定制</h6>
+<h6>点击android或者ios的返回按钮，自动hide</h6>
+<h6>自动处理滚动条，选择前缓存当前滚动位置</h6>
+<h6>touch深度定制处理</h6>
+<h6></h6>
+
+<button id="open">点击打开城市列表</button>
+<div id="res">
+    选择结果显示在这里
+</div>
+
+<script>
+    var open = document.querySelector('#open');
+    var res = document.querySelector('#res');
+
+    var citySelector = new X.widgets.CitySelector({
+        data: data.cities,
+        onSelect: function (data) {
+            console.log(data);
+            res.textContent = JSON.stringify(data);
+        }
+    });
+
+    open.addEventListener('click', function (e) {
+        citySelector.show();
+    }, false);
+
+</script>
+</body>
+</html>

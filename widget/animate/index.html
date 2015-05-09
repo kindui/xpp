@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <title></title>
+    <script src="../../dist/xpp.js"></script>
+    <script src="animate2.0.js"></script>
+    <style>
+        .block{
+            width:     50px;
+            height:    50px;
+            background:#000;
+        }
+        .red{
+            margin-top:200px;
+            background:red;
+        }
+        .back{
+            border: 1px dashed #ccc;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top: 25px;
+            left: 25px;
+        }
+    </style>
+</head>
+<body>
+刷新重新加载
+<div class="back"></div>
+
+<div class="block first"></div>
+
+<div class="block red"></div>
+
+<!--<img src="img/a.jpg"/>-->
+<!--<img src="img/b.jpg"/>-->
+<script>
+
+    var base = X.base;
+    setTimeout(function(){
+        X.animate(base.$('.first'))
+                .add({
+                    property: {
+                        webkitTransform: 'translate(200px, 0) rotate(45deg)',
+                    },
+                    during: 1000,
+                    effect: 'ease',
+                    delay: 1000,
+                    end: function(el){
+                        console.log('end1');
+                    }
+                }).add({
+                    property: {
+                        webkitTransform: 'translate(200px, 200px) rotate(0deg)'
+                    },
+                    during: 1000,
+                    effect: 'ease-in',
+                    delay: 1000,
+                    end: function(el){
+                        console.log('end2');
+                    }
+                }).add({
+                    property: {
+                        webkitTransform: 'translate(0, 200px) rotate(45deg)'
+                    },
+                    during: 1000,
+                    effect: 'ease-out',
+                    delay: 0,
+                    end: function(){
+                        console.log('end3');
+                    }
+                }).add({
+                    property: {
+                        webkitTransform: 'translate(0, 0) rotate(0deg)',
+                    },
+                    during: 2000,
+                    effect: 'ease-in-out',
+                    delay: 1000,
+                    end: function(el){
+                        console.log('end4');
+                        console.log(el)
+                    }
+                }).add({
+                    property: {
+                        opacity: 0,
+                        webkitTransform: 'translate(0,-10px)'
+                    },
+                    during: 2000,
+                    effect: 'ease-in-out',
+                    delay: 1000,
+                    end: function(el){
+                        console.log('end5');
+                        el.style.visibility = 'hidden';
+                    }
+                }).run();
+
+
+        X.animate(base.$('.red'))
+                .add({
+                    property: {
+                        webkitTransform: 'translate(200px, 0px) rotate(45deg)'
+                    },
+                    during: 5000,
+                    effect: 'ease',
+                    delay: 0,
+                    end: function(){
+                        console.log('2:end1');
+                    }
+                }).add({
+                    property: {
+                        webkitTransform: 'translate(200px, 0px) rotate(0deg)'
+                    },
+                    during: 2000,
+                    effect: 'ease-in-out',
+                    delay: 0,
+                    end: function(el){
+                        console.log('2:end2');
+                    }
+                })
+                .add({
+                    property: {
+                        opacity:0,
+                        webkitTransform: 'translate(0px, 0px) rotate(0deg)'
+                    },
+                    during: 5000,
+                    effect: 'ease-in-out',
+                    delay: 0,
+                    end: function(el){
+                        console.log('2:end2');
+                        el.style.visibility = 'hidden';
+                    }
+                })
+                .run();
+    }, 0);
+</script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <script type="text/javascript" src="../../dist/xpp.js"></script>
+    <script type="text/javascript" src="validator.js"></script>
+    <style>
+
+        label{
+            display:inline-block;
+            width:130px;
+        }
+        input {
+            border: 1px solid #ccc;
+            width:200px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="test">
+    <label>必填项:</label>
+    <input type="text" name="require" />
+</div>
+
+<div>
+    <label>长度6~10:</label>
+    <input type="text" name="maxmin"/>
+</div>
+
+<div>
+    <label>邮件:</label>
+    <input type="text" name="email"/>
+</div>
+
+<div>
+    <label>数字:</label>
+    <input type="text" name="number"/>
+</div>
+
+<div>
+    <label>用户自定义:</label>
+    <input type="text" name="user"/>
+</div>
+
+<script>
+
+    var Validator = X.widgets.Validator;
+
+    var v = new Validator({
+        el:'#test'
+    });
+    //自定义类型
+    v.addRule('length2',/^.{2}$/);
+    // 全局定义处理
+    v.onError = function (errorList, el) {
+        el.style.border = '1px solid red';
+    }
+    v.onFocus = function (el) {
+        el.style.border = '1px solid #ccc';
+    }
+    //
+    v
+            .addItem({
+                el: '[name=require]',
+                require: true,
+                autoFocus:true,
+                placeholder: '这个必须要填写',
+                onError: function (errorList, el) {
+                    console.log('error:' + errorList[0]);
+                    el.style.border = '1px solid red';
+                },
+                onFocus: function (el) {
+                    el.style.border = '1px solid #ccc';
+                }
+            })
+            .addItem({
+                el: '[name=maxmin]',
+                require: true,
+                min: 6,
+                max: 10,
+                placeholder: '6<= 长度 <= 10; require',
+                onError: function (errorList, el) {
+                    console.log(errorList);
+                }
+            })
+            .addItem({
+                el: '[name=email]',
+                require: true,
+                email: true,
+                placeholder: 'Email 的格式',
+                onError: function (errorList, el) {
+                    console.log(errorList);
+                }
+            })
+            .addItem({
+                el: '[name=number]',
+                require: true,
+                number: true,
+                placeholder: '数字 的格式',
+                onError: function (errorList, el) {
+                    console.log(errorList);
+                }
+            })
+            .addItem({
+                el: '[name=user]',
+                length2:true,
+                placeholder: '长度必须=2',
+                onError: function (errorList, el) {
+                    console.log(errorList);
+                }
+            })
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <link type="text/css" rel="stylesheet" href="index.css"/>
+    <script type="text/javascript" src="../pcTouch/pcTouch.js"></script>
+    <script src="../../dist/xpp.js"></script>
+    <script type="text/javascript" src="pageSlider.js"></script>
+</head>
+<body>
+<style>
+
+</style>
+<div id="head-back">I Love you</div>
+<div id="foot-back">I Love you too!</div>
+<div id="pages">
+
+    <section class="page page-1" style="-webkit-transform: translate3d(0, 0, 0);">
+        <h1>往上拉动跳转到下一页</h1>
+        <h1>往下拉动有秘密</h1>
+        <h1>支持X，Y轴随意定制</h1>
+        <div class="circle"></div>
+
+        <div class="array array-down"></div>
+    </section>
+
+    <section class="page page-2">
+        <div class="circle"></div>
+        <div class="block block1 "></div>
+        <div class="block block2 "></div>
+        <div class="block3 block"></div>
+        <div class="block4 block"></div>
+        <div class="block5 block"></div>
+        <div class="array array-down"></div>
+    </section>
+
+    <section class="page page-3 ">
+        <section class="sub-page sub-page1" style="-webkit-transform: translate3d(0, 0, 0);">
+            <h1>注意：请向右边滑动</h1>
+            <div class="array array-down"></div>
+            <div class="array array-right"></div>
+        </section>
+        <section class="sub-page sub-page2">
+            <div class="array array-down"></div>
+            <div class="array array-right"></div>
+            <div class="array array-left"></div>
+        </section>
+        <section class="sub-page sub-page3">
+            <div class="array array-down"></div>
+            <div class="array array-right"></div>
+            <div class="array array-left"></div>
+        </section>
+    </section>
+
+    <section class="page page-4">
+        <div class="array array-down"></div>
+    </section>
+
+    <section class="page page-5">
+        <div class="array array-down"></div>
+    </section>
+
+</div>
+
+<script>
+    a = new X.widgets.PageSlider({
+        el:'#pages'
+    });
+    b = new X.widgets.PageSlider( {
+        el:'.page-3',
+        swipe: 'X',
+        pageClass: '.sub-page'
+    });
+    a.play();
+</script>
+
+</body>
+</html>

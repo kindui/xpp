@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="pcTouch.js"></script>
+</head>
+<body>
+<style>
+    body, html {
+        margin: 0;
+        width:100%;
+        height:100%;
+        background:#eee;
+        color:#333;
+    }
+
+    .a {
+        width:100%;
+        height:100%;
+    }
+</style>
+<div class="a">
+    点击屏幕滑动试试？
+</div>
+<script>
+
+    var a = document.querySelector('.a');
+//    var b = document.querySelector('.b');
+
+
+    document.body.addEventListener('touchstart', function (e) {
+        a.textContent += 'touchstart\n';
+    }, false);
+
+    document.body.addEventListener('touchmove', function (e) {
+        a.textContent += 'touchmove\n';
+    }, false);
+
+    document.body.addEventListener('touchend', function (e) {
+        a.textContent += 'touchend\n';
+    }, false);
+</script>
+</body>
+</html>

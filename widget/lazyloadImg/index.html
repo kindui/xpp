@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="../../dist/xpp.js"></script>
+    <script src="lazyLoadImg.js"></script>
+    <style>
+        .a{
+            width:1000%;
+            height:200px;
+            background:#ccc;
+        }
+        h1{
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+<div class="a">
+    <h1>往下滚动</h1>
+</div>
+<img id="a" src="blank.gif" alt="" data-lazy="http://toddmotto.com/labs/echo/img/album-1.jpg">
+<div class="a"></div>
+<img src="blank.gif" alt="" data-lazy="http://toddmotto.com/labs/echo/img/album-2.jpg">
+<div class="a"></div>
+<img src="blank.gif" alt="" data-lazy="http://toddmotto.com/labs/echo/img/album-3.jpg">
+<div class="a"></div>
+<img src="blank.gif" alt="" data-lazy="http://toddmotto.com/labs/echo/img/album-4.jpg">
+<div class="a"></div>
+<img src="blank.gif" alt="" data-lazy="http://toddmotto.com/labs/echo/img/album-5.jpg">
+<div class="a"></div>
+<script>
+    //图片加载完毕，自动删除缓存
+    lazy = new X.widgets.LazyLoadImg({
+        dataName:'lazy',
+        throttle:50,
+        offset:10,
+        onLoad:function(el){
+            console.log(el);
+        }
+    });
+
+    //可以调用 destroy()方法销毁插件
+    //  lazy.destroy();
+</script>
+</body>
+</html>

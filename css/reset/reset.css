@@ -1,0 +1,47 @@
+/* reset start */
+body, p, input, dl, dd, h1, h2, h3, h4, h5, h6{
+    margin:0;
+}
+body{
+    font-family:        "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+    -webkit-user-select:none;
+}
+h1, h2, h3, h4, h5, h6{
+    font-size:100%;
+}
+ul{
+    margin:    0;
+    padding:   0;
+    list-style:none;
+}
+dl,dd{
+    margin:0;
+}
+table{
+    border-collapse:collapse;
+    border-spacing: 0;
+}
+td{
+    padding:0;
+}
+a {
+    text-decoration: none;
+    color: #000;
+}
+a:visited {
+    color: #000
+}
+a,img,button,input,select {
+    -webkit-tap-highlight-color: transparent;
+    outline: 0
+}
+img {
+    border: 0 none;
+    vertical-align: top
+}
+a{
+    /*-webkit-touch-callout:      none;*/
+}
+
+.ell { text-overflow: ellipsis; white-space: nowrap; overflow: hidden; }
+/* reset end */

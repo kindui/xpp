@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="../../dist/xpp.js"></script>
+    <script type="text/javascript" src="textScroll.js"></script>
+</head>
+<body>
+<style>
+    body, html{
+        margin:0;
+    }
+    ul, ol{
+        margin:    0;
+        padding:   0;
+        list-style:none;
+    }
+    .loop-word{
+        margin:     20px auto;
+        width:      200px;
+        height:     20px;
+        line-height:20px;
+        overflow:   hidden;
+        text-align: center;
+        font-size:  12px;
+        color:      black;
+        border:     1px dashed green;
+    }
+    .f1{
+        top:        20px;
+        height:     40px;
+        line-height:40px;
+        font-size:  20px;
+    }
+    .f2{
+        color:red;
+    }
+    .f3{
+        color:blue;
+    }
+    .f4{
+        color:purple;
+    }
+    .f5{
+        position:   absolute;
+        left:       0;
+        bottom:     0;
+        margin:     0;
+        width:      100%;
+        height:     40px;
+        line-height:40px;
+        font-size:  40px;
+        background: #ccc;
+        color:      white;
+    }
+</style>
+<div class="loop-word f1">
+    <ul>
+        <li>床前明月光，</li>
+        <li>疑是地上霜。</li>
+        <li>举头望明月，</li>
+        <li>低头思故乡。</li>
+    </ul>
+</div>
+
+<div class="loop-word f2">
+    <ul>
+        <li>床前明月光，</li>
+        <li>疑是地上霜。</li>
+        <li>举头望明月，</li>
+        <li>低头思故乡。</li>
+    </ul>
+</div>
+<div class="loop-word f3">
+    <ul>
+        <li>床前明月光，</li>
+        <li>疑是地上霜。</li>
+        <li>举头望明月，</li>
+        <li>低头思故乡。</li>
+    </ul>
+</div>
+<div class="loop-word f4">
+    <ul>
+        <li>床前明月光，</li>
+        <li>疑是地上霜。</li>
+        <li>举头望明月，</li>
+        <li>低头思故乡。</li>
+    </ul>
+</div>
+<div class="loop-word f5">
+    <ul>
+        <li>床前明月光，</li>
+        <li>疑是地上霜。</li>
+        <li>举头望明月，</li>
+        <li>低头思故乡。</li>
+    </ul>
+</div>
+<script>
+    var TextScroll = X.widgets.TextScroll;
+    var f1 = new TextScroll({
+        el:'.f1',
+        totalTime:5
+    });
+    var f2 = new TextScroll({
+        el:'.f2',
+        totalTime:8
+    });
+    var f3 = new TextScroll({
+        el:'.f3',
+        totalTime:15
+    });
+    var f4 = new TextScroll({
+        el:'.f4',
+        stopFrame:1
+    });
+    var f5 = new TextScroll({
+        el:'.f5'
+    });
+</script>
+</body>
+</html>
